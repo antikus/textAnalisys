@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ML-CONFIG>
+  <VERBOSITY level="0"/>
+  <SURROUND value="false"/>
+
+  <IS-LABEL-UPDATABLE value="true"/>
+  <IS-NLPFEATURELIST-UPDATABLE value="true"/>
+
+  <PARAMETER name="thresholdProbabilityEntity" value="0.2"/>
+  <PARAMETER name="thresholdProbabilityBoundary" value="0.42"/>
+  <PARAMETER name="thresholdProbabilityClassification" value="0.4"/>
+
+  <multiClassification2Binary method="one-vs-others"/>
+
+  <!-- Evaluation : how to split the corpus into test and learn? -->
+  <EVALUATION method="split" runs="1" ratio="0.80"/>
+
+  <FILTERING ratio="0.0" dis="near"/>
+
+  <ENGINE nickname="PAUM" implementationName="PAUM" options = "-p 50 -n 50 -optB 0.0"/>  
+
+
+ 
+
+<!--<ENGINE>
+	<WRAPPER>gate.creole.ml.weka.Wrapper</WRAPPER>
+	<OPTIONS>
+	<CLASSIFIER OPTIONS="">weka.clusterers.SimpleKMeans</CLASSIFIER>
+	<CONFIDENCE-THRESHOLD>0.85</CONFIDENCE-THRESHOLD>
+	</OPTIONS>
+</ENGINE>-->
+
+  <DATASET>
+     <INSTANCE-TYPE>Text</INSTANCE-TYPE>
+     <NGRAM>
+        <NAME>Text1gram</NAME>
+        <NUMBER>1</NUMBER>
+        <CONSNUM>2</CONSNUM>
+        <CONS-1>
+            <TYPE>Token</TYPE>
+	    <FEATURE>root</FEATURE>
+         </CONS-1>
+         <CONS-2>
+            <TYPE>Token</TYPE>
+	    <FEATURE>category</FEATURE>
+         </CONS-2> 
+     </NGRAM>     
+                
+     <ATTRIBUTE>
+	<NAME>Class</NAME>
+	<SEMTYPE>NOMINAL</SEMTYPE>
+	<TYPE>Text</TYPE>
+	<FEATURE>sentiment</FEATURE>
+	<POSITION>0</POSITION>
+	<CLASS/>
+      </ATTRIBUTE>
+   </DATASET>
+
+</ML-CONFIG>

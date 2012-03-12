@@ -1,0 +1,14 @@
+# Compiled source #
+###################
+*.class
+.classpath
+.project
+
+# Eclipse generated files #
+######################
+.metadata
+savedFiles
+
+# OS generated files #
+######################
+

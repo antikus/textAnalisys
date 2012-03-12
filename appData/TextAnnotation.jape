@@ -1,0 +1,12 @@
+Phase:  textAssigned
+Input:  Sentence 
+Options: control = appelt 
+
+
+Rule:text
+(
+ ({Sentence})+
+)  
+:text
+-->  
+ :text.Text = {} 
